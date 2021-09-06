@@ -199,6 +199,12 @@ service RuntimeService {
             get: "/v1/project/{project_name}/replay"
         };
     }
+    rpc DryRunBackup(DryRunBackupRequest) returns (DryRunBackupResponse) {
+        option (google.api.http) = {
+            post: "/v1/project/{project_name}/namespace/{namespace}/datastore/{datastore_name}/resource/{resource_name}/backup/dryrun"
+            body: "*"
+        };
+    }
     // TODO(kush.sharma): disabled ATM
     //rpc DeleteResource(DeleteResourceRequest) returns (DeleteResourceResponse) {}
 
@@ -690,4 +696,17 @@ message ReplaySpec {
     google.protobuf.Timestamp end_date = 4;
     string state = 5;
     google.protobuf.Timestamp created_at = 6;
+}
+
+message DryRunBackupRequest {
+    string project_name = 1;
+    string datastore_name = 2;
+    string resource_name = 3;
+    string namespace = 4;
+    string description = 5;
+    bool ignore_downstream = 6;
+}
+
+message DryRunBackupResponse {
+    repeated string resource_name = 1;
 }
