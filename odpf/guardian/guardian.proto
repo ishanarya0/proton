@@ -224,7 +224,7 @@ message UpdatePolicyResponse {
 }
 
 message ListResourcesRequest {
-    bool is_deleted = 1;
+    string is_deleted = 1;
 }
 
 message ListResourcesResponse {
