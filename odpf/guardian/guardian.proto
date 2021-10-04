@@ -224,7 +224,7 @@ message UpdatePolicyResponse {
 }
 
 message ListResourcesRequest {
-    string is_deleted = 1;
+    bool is_deleted = 1;
     string provider_type = 2;
     string provider_urn = 3;
     string type = 4;
